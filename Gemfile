@@ -34,12 +34,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # use bootstrap 4 for CSS styling
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+# gem 'bootstrap', '~> 4.0.0.beta2.1'
+
+gem 'devise-bootstrap-views'
 # required by bootstrap
 gem 'jquery-rails'
 
-# devise for authentication
+# devise/cancancan for authentication roles
 gem 'devise'
+gem 'cancancan', '~> 2.1', '>= 2.1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

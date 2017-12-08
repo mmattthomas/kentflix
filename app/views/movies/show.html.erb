@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4>
+      <%= link_to @movie.title, @movie.url %>
+    </h4>
+  </div>
+  <div class="panel-body">
+      <div class="form-group">
+        <p>
+          <strong>Description:</strong>
+          <%= @movie.description %>
+        </p>
+      </div>
+      <div class="form-group">
+        <p>
+          <strong>Rating:</strong>
+          <%= @movie.rating %> stars.
+        </p>
+      </div>
+      <div class="form-group">
+        <p>
+          <strong>Runtime:</strong>
+          <%= @movie.runtime %> minutes.
+        </p>
+      </div>      
+      <div class="form-group">
+        <p>
+          <strong>Released:</strong>
+          <%= @movie.released %>
+        </p>
+      </div>      
+      <div class="form-group">
+        <p>
+          <strong>Checked Out To:</strong>
+          <%= @movie.checked_out_to_id %>
+        </p>
+      </div>               
+    </div>
+  </div>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %> |
+<%= link_to 'Check Out!', movies_path %>
