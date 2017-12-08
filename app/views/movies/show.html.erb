@@ -32,13 +32,18 @@
       </div>      
       <div class="form-group">
         <p>
-          <strong>Checked Out To:</strong>
-          <%= @movie.checked_out_to_id %>
+          <strong>
+            <%= @checkout_status %>
+          </strong>
+        </p>
+      </div>           
+        <div class="form-group">
+        <p>
+          <%= link_to 'Check Out!', movies_path, :class => 'btn btn-primary' %>
         </p>
       </div>               
     </div>
   </div>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %> |
-<%= link_to 'Check Out!', movies_path %>
+<%= link_to 'Edit', edit_movie_path(@movie), :class => 'btn btn-default' %> 
+<%= link_to 'Back', movies_path, :class => 'btn btn-default' %> 

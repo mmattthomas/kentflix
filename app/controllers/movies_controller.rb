@@ -10,6 +10,8 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @checkout_status = "Checked out to Matt!"
+
   end
 
   # GET /movies/new
@@ -19,6 +21,8 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def edit
+    @users = User.all
+    
   end
 
   # POST /movies
