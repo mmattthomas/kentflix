@@ -8,8 +8,9 @@ Product Roadmap:
 - [x] Bootstrap CSS
 - [x] User Authentication (Devise)
 - [x] Movie object list, forms
-- [ ] Show who is checked out to (or "Available")
-- [ ] Check-out/Check-in Button
+- [X] Show who is checked out to (or "Available")
+- [X] Check-out/Check-in Button
+- --- sort of functional
 - [ ] Role enforcement [cancancan]
 - [ ] Improve rating display as stars
 - [ ] Improve Admin/Edit forms (dates, foreign key check-out)

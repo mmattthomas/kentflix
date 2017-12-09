@@ -1,17 +1,27 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :checkout, :checkin]
+  before_action :authenticate_user!
 
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.sorted
   end
 
   # GET /movies/1
   # GET /movies/1.json
   def show
-    @checkout_status = "Checked out to Matt!"
-
+    if !@movie.checked_out_to_id.nil?
+      if @movie.checked_out_to_id == current_user.id
+        @checkout_status = "You currently have this movie"
+      else
+        checked_out_to = User.find(@movie.checked_out_to_id).name
+        @checkout_status = "Checked out to #{checked_out_to}" 
+      end
+    else
+      @checkout_status = "Available!" 
+    end
   end
 
   # GET /movies/new
@@ -55,6 +65,27 @@ class MoviesController < ApplicationController
     end
   end
 
+  def checkout
+    if @movie.update(:checked_out_to => current_user)
+      redirect_to @movie, notice: 'Movie was successfully checked out!' 
+    else
+      redirect_to @movie, notice: 'Error unable to checkout movie' 
+    end    
+  end
+
+  def checkin
+    #moviedesc = @movie.description + " - returned!"
+    @movie.checked_out_to = nil
+    @movie.save!
+    redirect_to @movie, notice: 'Movie was successfully returned!' 
+
+    # if @movie.update(:checked_out_to => nil)
+    #   redirect_to @movie, notice: 'Movie was successfully returned!' 
+    # else
+    #   redirect_to @movie, notice: 'Error unable to return movie' 
+    # end
+    
+  end
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
