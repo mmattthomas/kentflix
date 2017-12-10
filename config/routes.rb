@@ -6,8 +6,14 @@ Rails.application.routes.draw do
     
   end
   
-  root to: 'visitors#index'
+  authenticated :user do
+    root to: "movies#index", as: :authenticated_root
+  end
   
+  unauthenticated do
+    root to: 'visitors#index'
+  end
+
   devise_for :users, :controllers => { registrations: 'registrations' }  
   resources :users  
 

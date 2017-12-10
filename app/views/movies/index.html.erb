@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Movies</h1>
+<div><h1><%= image_tag '/assets/kentflix_logo_sm.png', :style => "align:left" %> &Movies</h1></div>
 
 <table class="table">
   <thead>
@@ -24,7 +24,7 @@
         <% end %>
         </td>
         <td><%= movie.runtime %> min</td>
-        <td><%= movie.checked_out_to.nil? ? "Available!" : movie.checked_out_to.name %></td>
+        <td class="tags"><%= movie.checked_out_to.nil? ? link_to("Available!", movie, :class=>"success") : link_to(movie.checked_out_to.name, movie, :class=>"warning") %></td>
       </tr>
     <% end %>
   </tbody>
