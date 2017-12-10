@@ -45,12 +45,7 @@
         <%= form.label :url %>
         <%= form.text_field :url, id: :movie_url, class: 'form-control'  %>
       </div>
-<!--
-      <div class="form-group">
-        <%= form.label :checked_out_to_id %>
-        <%= form.select :checked_out_to_id, options_for_select(@users.all.map{|s|[s.name, s.id]}), :include_blank => true, class: 'form-control' %>    
-      </div>
--->
+
 
   <div class="actions">
     <%= form.submit %>

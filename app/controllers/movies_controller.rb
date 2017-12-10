@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
+    @current_user = current_user
     @movies = Movie.sorted
   end
 
