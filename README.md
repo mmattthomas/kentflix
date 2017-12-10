@@ -11,10 +11,12 @@ Product Roadmap:
 - [X] Show who is checked out to (or "Available")
 - [X] Check-out/Check-in Button
 - --- sort of functional
+- [X] Fix movie list to show who has what movie
+- [ ] Show how many movies you have checked out, and limit/warn going over
 - [ ] Role enforcement [cancancan]
 - [ ] Improve rating display as stars
 - [ ] Improve Admin/Edit forms (dates, foreign key check-out)
-- [ ] 1.0 !
+- [ ] 1.0 ! RELEASE TO HEROKU
 - [ ] Subscribe to be notified when something's available (need sendgrid or smtp)
 - [ ] User comments/ratings
 - [ ] User rating amalgamation/average 

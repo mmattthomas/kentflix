@@ -9,7 +9,7 @@
       <th>Description</th>
       <th>Rating</th>
       <th>Runtime</th>
-      <th>Released</th>
+      <th>Checked Out To</th>
     </tr>
   </thead>
 
@@ -20,7 +20,7 @@
         <td><i><%= movie.description %></i></td>
         <td><%= movie.rating %> stars</td>
         <td><%= movie.runtime %> min</td>
-        <td><%= movie.released %></td>
+        <td><%= movie.checked_out_to.nil? ? "Available!" : movie.checked_out_to.name %></td>
       </tr>
     <% end %>
   </tbody>

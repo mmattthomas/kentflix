@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @current_user = current_user
     if !@movie.checked_out_to_id.nil?
       if @movie.checked_out_to_id == current_user.id
         @checkout_status = "You currently have this movie"
@@ -67,23 +68,19 @@ class MoviesController < ApplicationController
 
   def checkout
     if @movie.update(:checked_out_to => current_user)
-      redirect_to @movie, notice: 'Movie was successfully checked out!' 
+      redirect_to @movie, notice: 'Movie was successfully checked out to you!' 
     else
       redirect_to @movie, notice: 'Error unable to checkout movie' 
     end    
   end
 
   def checkin
-    #moviedesc = @movie.description + " - returned!"
-    @movie.checked_out_to = nil
-    @movie.save!
-    redirect_to @movie, notice: 'Movie was successfully returned!' 
-
-    # if @movie.update(:checked_out_to => nil)
-    #   redirect_to @movie, notice: 'Movie was successfully returned!' 
-    # else
-    #   redirect_to @movie, notice: 'Error unable to return movie' 
-    # end
+    
+    if @movie.update(:checked_out_to => nil)
+      redirect_to @movie, notice: 'Movie was successfully returned!' 
+    else
+      redirect_to @movie, notice: 'Error unable to return movie' 
+    end
     
   end
   # DELETE /movies/1
