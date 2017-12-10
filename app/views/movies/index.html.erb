@@ -2,12 +2,12 @@
 
 <h1>Movies</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Rating</th>
+      <th width="100px">Rating</th>
       <th>Runtime</th>
       <th>Checked Out To</th>
     </tr>
@@ -17,8 +17,12 @@
     <% @movies.each do |movie| %>
       <tr>
         <td><b><%= link_to movie.title, movie %></b></td>
-        <td><i><%= movie.description %></i></td>
-        <td><%= movie.rating %> stars</td>
+        <td><i><%= raw movie.description %></i></td>
+        <td>
+        <% for i in 0...movie.rating do %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        <% end %>
+        </td>
         <td><%= movie.runtime %> min</td>
         <td><%= movie.checked_out_to.nil? ? "Available!" : movie.checked_out_to.name %></td>
       </tr>

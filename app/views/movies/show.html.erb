@@ -8,13 +8,15 @@
       <div class="form-group">
         <p>
           <strong>Description:</strong>
-          <%= @movie.description %>
+          <%= raw @movie.description %>
         </p>
       </div>
       <div class="form-group">
         <p>
           <strong>Rating:</strong>
-          <%= @movie.rating %> stars.
+        <% for i in 0...@movie.rating do %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        <% end %>
         </p>
       </div>
       <div class="form-group">

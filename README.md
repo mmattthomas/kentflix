@@ -9,15 +9,20 @@ Product Roadmap:
 - [x] User Authentication (Devise)
 - [x] Movie object list, forms
 - [X] Show who is checked out to (or "Available")
-- [X] Check-out/Check-in Button
-- --- sort of functional
+- [X] Check-out/Check-in Buttons
 - [X] Fix movie list to show who has what movie
+- [X] Administrator (manually set)
+- [X] Improve Admin/Edit forms (dates, foreign key check-out)
+- [X] 1.0 ! RELEASE TO HEROKU
+- [ ] Pretty up "Available"/Checkedout columns in grid
+- [ ] If logged in, always go to movie page
+- [ ] Movie list has kent logo real small?
 - [ ] Show how many movies you have checked out, and limit/warn going over
-- [ ] Role enforcement [cancancan]
 - [ ] Improve rating display as stars
-- [ ] Improve Admin/Edit forms (dates, foreign key check-out)
-- [ ] 1.0 ! RELEASE TO HEROKU
-- [ ] Subscribe to be notified when something's available (need sendgrid or smtp)
+- [ ] Subscribe "get in line" as next person ABLE to check-out movie
+- [ ] Auto notification to next-in-line person  
 - [ ] User comments/ratings
 - [ ] User rating amalgamation/average 
 - [ ] External data: Rotten Tomatoes score, image, imdb, etc.
+- [ ] Embed video trailer
+- [ ] Super slick viewer (scrolling list instead of basic <table>)
