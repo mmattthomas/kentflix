@@ -1,35 +1,35 @@
 <div><h1><%= image_tag '/assets/kentflix_logo_sm.png', :style => "align:left" %> &Movies</h1></div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th width="100px">Rating</th>
-      <th>Runtime</th>
-      <th>Checked Out To</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><b><%= link_to movie.title, movie %></b></td>
-        <td><i><%= raw movie.description %></i></td>
-        <td>
-        <% if !movie.rating.nil? %>  
-          <% for i in 0...movie.rating do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-        <% end %>
-        </td>
-        <td><%= movie.runtime %> min</td>
-        <td class="tags"><%= movie.checked_out_to.nil? ? link_to("Available!", movie, :class=>"success") : link_to(movie.checked_out_to.name, movie, :class=>"warning") %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th width="100px">Rating</th>
+        <th>Runtime</th>
+        <th>Checked Out To</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><b><%= link_to movie.title, movie %></b></td>
+          <td><i><%= raw movie.description %></i></td>
+          <td>
+          <% if !movie.rating.nil? %>  
+            <% for i in 0...movie.rating do %>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+          </td>
+          <td><%= movie.runtime %> min</td>
+          <td class="tags"><%= movie.checked_out_to.nil? ? link_to("Available!", movie, :class=>"success") : link_to(movie.checked_out_to.name, movie, :class=>"warning") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</table>
 <br>
 <% if @current_user.admin %>
 <%= link_to 'New Movie', new_movie_path, :class => 'btn btn-primary' %>
