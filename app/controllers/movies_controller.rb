@@ -35,18 +35,20 @@ class MoviesController < ApplicationController
   # GET /movies/new
   def new
     @movie = Movie.new
+    @users = User.all
   end
 
   # GET /movies/1/edit
   def edit
-    @users = User.all
-    
+    @users = User.all        
   end
 
   # POST /movies
   # POST /movies.json
   def create
     @movie = Movie.new(movie_params)
+
+    @current_checkout = 0
     if @movie.rating.nil?
       @movie.rating = 0
     end
