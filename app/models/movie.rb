@@ -5,4 +5,8 @@ class Movie < ApplicationRecord
 
     scope :sorted, lambda { order("movies.title ASC")}
     scope :sort_by_added, lambda { order("movies.created_at DESC")}
+
+    def self.checkout_count_for_user user_id
+        self.where("checked_out_to_id = ?", user_id).count
+    end
 end

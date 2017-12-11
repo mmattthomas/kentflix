@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   
   before_action :set_movie, only: [:show, :edit, :update, :destroy, :checkout, :checkin]
+  before_action :get_cart
   before_action :authenticate_user!
 
   # GET /movies
@@ -8,6 +9,9 @@ class MoviesController < ApplicationController
   def index
     @current_user = current_user
     @movies = Movie.sorted
+    if !@checkout_warning.nil? && !@checkout_warning.empty?
+      flash[:warning] = @checkout_warning
+    end
   end
 
   # GET /movies/1
@@ -110,6 +114,21 @@ class MoviesController < ApplicationController
   end
 
   private
+
+    # Get Current count
+    def get_cart
+      @checkout_count = Movie.checkout_count_for_user current_user
+      @checkout_limit = 3
+      @checkout_status = "#{@checkout_count} of #{@checkout_limit} movies checked out"
+      @checkout_warning = ""
+      if @checkout_count == @checkout_limit
+        @checkout_warning = "Warning: you cannot checkout any more movies"
+      elsif @checkout_count > @checkout_limit
+        @checkout_warning = "You have checked out more movies than allowed!"
+      end
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])

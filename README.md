@@ -17,10 +17,13 @@ Product Roadmap:
 - [X] Pretty up "Available"/Checkedout columns in grid
 - [X] If logged in, always go to movie page
 - [X] Movie list has kent logo real small?
-- [ ] Bootstrap improvement for list on mobile page
-- [ ] Rename or remove "Home" Nav link
-- [ ] Show how many movies you have checked out, and limit/warn going over
+- [X] Rename or remove "Home" Nav link
 - [X] Improve rating display as stars
+- [X] Show how many movies you have checked out, and warn going over
+- [ ] Prevent checkout past [limit] movies
+- [ ] Bootstrap improvement for list on mobile page (show checkout in same column as title?)
+- [ ] Notify Admin when movie is checked out/returned by someone
+- [ ] Allow admin to turn off notifications
 - [ ] Subscribe "get in line" as next person ABLE to check-out movie
 - [ ] Auto notification to next-in-line person  
 - [ ] User comments/ratings
