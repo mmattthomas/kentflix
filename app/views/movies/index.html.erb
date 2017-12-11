@@ -1,4 +1,4 @@
-<div><h1><%= image_tag '/assets/kentflix_logo_sm.png', :style => "align:left" %> &Movies</h1></div>
+<div><h1><%= image_tag '/assets/kentflix_logo_sm.png', :style => "align:left" %> &nbsp;Movies</h1></div>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -24,7 +24,11 @@
           <% end %>
           </td>
           <td><%= movie.runtime %> min</td>
-          <td class="tags"><%= movie.checked_out_to.nil? ? link_to("Available!", movie, :class=>"success") : link_to(movie.checked_out_to.name, movie, :class=>"warning") %></td>
+          <% if movie.override_checkout.nil? || movie.override_checkout == "" %>
+          <td class="tags"><%= movie.checked_out_to.nil? ? link_to("Available!", movie, :class=>"success") : link_to(movie.checked_out_to.name, movie, :class=>"warning") %></td>          
+          <% else %>
+          <td class="tags"><%= link_to(movie.override_checkout, movie, :class=>"warning") %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

@@ -14,15 +14,21 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @current_user = current_user
-    if !@movie.checked_out_to_id.nil?
-      if @movie.checked_out_to_id == current_user.id
-        @checkout_status = "You currently have this movie"
+
+    if !@movie.override_checkout.nil? && @movie.override_checkout != ""
+      @checkout_status = "Checked out to #{@movie.override_checkout}"
+    else 
+
+      if !@movie.checked_out_to_id.nil?
+        if @movie.checked_out_to_id == current_user.id
+          @checkout_status = "You currently have this movie"
+        else
+          checked_out_to = User.find(@movie.checked_out_to_id).name
+          @checkout_status = "Checked out to #{checked_out_to}" 
+        end
       else
-        checked_out_to = User.find(@movie.checked_out_to_id).name
-        @checkout_status = "Checked out to #{checked_out_to}" 
+        @checkout_status = "Available!" 
       end
-    else
-      @checkout_status = "Available!" 
     end
   end
 
@@ -109,6 +115,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :rating, :runtime, :released, :url, :checked_out_to_id)
+      params.require(:movie).permit(:title, :description, :rating, :runtime, :released, :url, :checked_out_to_id, :override_checkout)
     end
 end
