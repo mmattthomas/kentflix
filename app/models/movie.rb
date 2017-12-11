@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
 
+    has_many :comments
     belongs_to :checked_out_to, class_name: "User", optional: true
     validates :title, presence: true
 

@@ -19,19 +19,22 @@ class MoviesController < ApplicationController
   def show
     @current_user = current_user
 
+    @comments = @movie.comments.all
+    @comment = @movie.comments.build
+
     if !@movie.override_checkout.nil? && @movie.override_checkout != ""
-      @checkout_status = "Checked out to #{@movie.override_checkout}"
+      @movie_checkout_status = "Checked out to #{@movie.override_checkout}"
     else 
 
       if !@movie.checked_out_to_id.nil?
         if @movie.checked_out_to_id == current_user.id
-          @checkout_status = "You currently have this movie"
+          @movie_checkout_status = "You currently have this movie"
         else
           checked_out_to = User.find(@movie.checked_out_to_id).name
-          @checkout_status = "Checked out to #{checked_out_to}" 
+          @movie_checkout_status = "Checked out to #{checked_out_to}" 
         end
       else
-        @checkout_status = "Available!" 
+        @movie_checkout_status = "Available!" 
       end
     end
   end
