@@ -17,6 +17,8 @@ Product Roadmap:
 - [X] Pretty up "Available"/Checkedout columns in grid
 - [X] If logged in, always go to movie page
 - [X] Movie list has kent logo real small?
+- [ ] Bootstrap improvement for list on mobile page
+- [ ] Rename or remove "Home" Nav link
 - [ ] Show how many movies you have checked out, and limit/warn going over
 - [X] Improve rating display as stars
 - [ ] Subscribe "get in line" as next person ABLE to check-out movie
@@ -25,4 +27,4 @@ Product Roadmap:
 - [ ] User rating amalgamation/average 
 - [ ] External data: Rotten Tomatoes score, image, imdb, etc.
 - [ ] Embed video trailer
-- [ ] Super slick viewer (scrolling list instead of basic <table>)
+- [ ] Super slick viewer (scrolling list instead of basic `<table>`)
