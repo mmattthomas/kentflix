@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div><h1><%= image_tag '/assets/kentflix_logo_sm.png', :style => "align:left" %> &Movies</h1></div>
 
 <table class="table">
@@ -19,8 +17,10 @@
         <td><b><%= link_to movie.title, movie %></b></td>
         <td><i><%= raw movie.description %></i></td>
         <td>
-        <% for i in 0...movie.rating do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
+        <% if !movie.rating.nil? %>  
+          <% for i in 0...movie.rating do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
         <% end %>
         </td>
         <td><%= movie.runtime %> min</td>

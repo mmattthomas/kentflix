@@ -14,8 +14,10 @@
       <div class="form-group">
         <p>
           <strong>Rating:</strong>
-        <% for i in 0...@movie.rating do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
+        <% if !@movie.rating.nil? %>  
+          <% for i in 0...@movie.rating do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
         <% end %>
         </p>
       </div>
