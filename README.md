@@ -21,6 +21,7 @@ Product Roadmap:
 - [X] Improve rating display as stars
 - [X] Show how many movies you have checked out, and warn going over
 - [X] User comments
+- [ ] Sortable columns
 - [ ] Prettier comments + ratings
 - [ ] Prevent checkout past [limit] movies
 - [ ] Bootstrap improvement for list on mobile page (show checkout in same column as title?)
