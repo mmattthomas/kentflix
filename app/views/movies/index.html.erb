@@ -6,8 +6,7 @@
         <th>Title</th>
         <th class="hidden-xs">Description</th>
         <th class="hidden-xs" width="100px">Rating</th>
-        <th class="hidden-xs">Runtime</th>
-        <th>Checked Out To</th>
+        <th>Borrower</th>
       </tr>
     </thead>
 
@@ -23,7 +22,6 @@
             <% end %>
           <% end %>
           </td>
-          <td class="hidden-xs"><%= movie.runtime %> min</td>
           <% if movie.override_checkout.nil? || movie.override_checkout == "" %>
           <td class="tags"><%= movie.checked_out_to.nil? ? link_to("Available!", movie, :class=>"success") : link_to(movie.checked_out_to.name, movie, :class=>"warning") %></td>          
           <% else %>
