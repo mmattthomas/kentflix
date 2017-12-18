@@ -21,14 +21,14 @@ Product Roadmap:
 - [X] Improve rating display as stars
 - [X] Show how many movies you have checked out, and warn going over
 - [X] User comments
+- [X] Team functionality...join a team or create your own
 - [ ] Sortable columns
-- [ ] Prettier comments + ratings
-- [ ] Prevent checkout past [limit] movies
 - [ ] Bootstrap improvement for list on mobile page (show checkout in same column as title?)
 - [ ] Notify Admin when movie is checked out/returned by someone
 - [ ] Allow admin to turn off notifications
 - [ ] Subscribe "get in line" as next person ABLE to check-out movie
 - [ ] Auto notification to next-in-line person  
+- [ ] Prevent checkout past [limit] movies
 - [ ] User rating amalgamation/average 
 - [ ] External data: Rotten Tomatoes score, image, imdb, etc.
 - [ ] Embed video trailer
