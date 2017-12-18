@@ -1,7 +1,16 @@
 # Kentflix
 
 Kentflix is a little hobby app to rekindle my affection for Rails.  Its been a while so we'll see how it goes.
-The intent is a simple application to log into where you can view a list of movies and check-in/check-out
+The intent is a simple application to log into where you can view a list of movies and check-in/check-out.
+
+## Demo
+You can see a demo at kentflix.herokuapp.com
+
+## Roll your own
+If you want to download and run, follow normal Rails deployment guidelines.
+If you seed the database using seed.rb, it will create a default team named "MyFlix"
+If you join this team by signing up, you won't be an admin... get to rails console and update your user record with admin=true.
+Otherwise you can create a new team and add new movies manually.
 
 Product Roadmap:
 

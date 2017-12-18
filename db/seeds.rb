@@ -59,10 +59,14 @@ movie_list = [
     "WONDER WHEEL",
     "WONDER WOMAN"
   ]
+
   
+Team.create( name: "MyFlix", short_name: "MF!", checkout_limit: 3)
+t = Team.first
+
 movie_list.each do |name|
     title = name.titleize
     description = "Someone should probably write a description for <u>" + title + "</u>."
     url = "http://www.imdb.com/find?ref_=nv_sr_fn&q=" + title.downcase
-    Movie.create( title: title, description: description, rating: 0, runtime: 120, released: "2017-01-01", url: url )
+    Movie.create( title: title, description: description, rating: 0, runtime: 120, released: "2017-01-01", url: url, team_id: t.id )
 end
