@@ -1,20 +1,18 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    @user = User.new
-    @user.team_name = "Enter Team Name To Join or Create Here"
-    @resource = @user
-    @resource_name = "User"
+    super
+    # @user = User.new
+    # @user.team_name = "Enter Team Name To Join or Create Here"
+    # @resource = @user
+    # @resource_name = "User"
   end
 
   def create
-    super
-    if resource.save 
+    super do |resource|
       handle_team(resource)
+      flash[:notice] = "You are now an admin"
     end
-    
-
-    
   end
 
   def update
@@ -33,13 +31,15 @@ class RegistrationsController < Devise::RegistrationsController
       new_team.save!
 
       new_user.team_id = new_team.id
+      new_user.admin = true
       new_user.save!
+      puts "Created new team: #{new_user.team_name}"
       Rails.logger.debug "Created new team: #{new_user.team_name}"
     else
       #found - set team id
-      
-      new_user.team = team.id
+      new_user.team_id = team.id
       new_user.save!
+      puts "Joined team: #{new_user.team_name}"
       Rails.logger.debug "Joined team: #{new_user.team_name}"
     end
   end

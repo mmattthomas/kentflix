@@ -8,7 +8,8 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @current_user = current_user
-    @movies = Movie.sorted
+    #@movies = Movie.sorted
+    @movies = current_user.team.movies.sorted
     if !@checkout_warning.nil? && !@checkout_warning.empty?
       flash[:warning] = @checkout_warning
     end
@@ -54,6 +55,9 @@ class MoviesController < ApplicationController
   # POST /movies.json
   def create
     @movie = Movie.new(movie_params)
+
+    #all new movies created under team of current person (who is an admin because they CAN create)
+    @movie.team_id = current_user.team_id
 
     @current_checkout = 0
     if @movie.rating.nil?
@@ -139,6 +143,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :rating, :runtime, :released, :url, :checked_out_to_id, :override_checkout)
+      params.require(:movie).permit(:title, :description, :rating, :runtime, :released, :url, :checked_out_to_id, :override_checkout, :team_id)
     end
 end

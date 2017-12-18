@@ -13,8 +13,8 @@
         - [ ] if join-existing, display invite code field
     - [ ] in CREATE method:
         - [ ] if they chose create new team:
-            - [ ] validate team name is not in use
-            - [ ] create team record, associate user to it, set user.admin = true
+            - [X] validate team name is not in use
+            - [X] create team record, associate user to it, set user.admin = true
             - [ ] generate guid invite code + store w/ team record
         - [ ] if they chose join existing:
             - [ ] validate appropriate invite code received
@@ -23,8 +23,8 @@
     - [ ] set navigation window to show team name
     - [ ] bonus, set all routes to be kentflix.com/teamname
 1. [X] Add TEAM link to Movies table
-1. [ ] On create of movie, team is set to current_user.team
-1. [ ] Add scope for movie model to only show movies for current team
+1. [X] On create of movie, team is set to current_user.team
+1. [X] Add scope for movie model to only show movies for current team
 
 
 _Note, we're still "Movies", but in the future this could be anything needing check-in/check-out feature._

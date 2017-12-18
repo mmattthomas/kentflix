@@ -6,5 +6,5 @@ class User < ApplicationRecord
   belongs_to :team, optional:true
 
   attribute :team_name, :string
-
+  
 end
