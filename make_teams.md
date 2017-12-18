@@ -19,8 +19,8 @@
         - [ ] if they chose join existing:
             - [ ] validate appropriate invite code received
             - [ ] if so, create user, associate it to team record
-1. [ ] Make use of team name everywhere
-    - [ ] set navigation window to show team name
+1. [X] Make use of team name everywhere
+    - [X] set navigation window to show team name
     - [ ] bonus, set all routes to be kentflix.com/teamname
 1. [X] Add TEAM link to Movies table
 1. [X] On create of movie, team is set to current_user.team
