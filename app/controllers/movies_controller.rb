@@ -125,8 +125,8 @@ class MoviesController < ApplicationController
     # Get Current count
     def get_cart
       @checkout_count = Movie.checkout_count_for_user current_user
-      @checkout_limit = 3
-      @checkout_status = "#{@checkout_count} of #{@checkout_limit} movies checked out"
+      @checkout_limit = current_user.team.checkout_limit || 3
+      @checkout_status = "(#{@checkout_count} of #{@checkout_limit} movies checked out)"
       @checkout_warning = ""
       if @checkout_count == @checkout_limit
         @checkout_warning = "Warning: you cannot checkout any more movies"

@@ -3,8 +3,8 @@
   <div class="panel-heading">
     <h4><%= t('.title', resource: resource_class.model_name.human , default: "Edit #{resource_name.to_s.humanize}") %></h4>
   </div>
-  <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="panel-body">    
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, class: 'form-control' %>
@@ -24,10 +24,30 @@
       <div class="form-group">
         <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', default: 'we need your current password to confirm your changes') %>)</i>
         <%= f.password_field :current_password, class: 'form-control' %>
+      </div>    
+    </div>
+    <% if current_user.admin %>
+      <div class="panel-body">
+        <p>Team information</p>
+        <div class="form-group">
+          <%= f.label :team_name %>
+          <%= f.text_field :team_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :team_short_name %>
+          <%= f.text_field :team_short_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :team_checkout_limit %>
+          <%= f.number_field :team_checkout_limit, class: 'form-control' %>
+        </div>      
       </div>
-      <%= f.submit t('.update', default: 'Update'), class: 'btn btn-primary' %>
     <% end %>
-  </div>
+    <div class="panel-body">    
+        <%= f.submit t('.update', default: 'Update'), class: 'btn btn-primary' %>          
+    </div>
+    
+  <% end %>    
 </div>
 
 <p>Want to <b>Get Out</b>? (hahaaha) <%= link_to t('.cancel_my_account', default: 'Cancel my account'), registration_path(resource_name), data: { confirm: t('.are_you_sure', default: "Are you sure?") }, method: :delete %>.</p>

@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
+    puts "in new"
     super
     # @user = User.new
     # @user.team_name = "Enter Team Name To Join or Create Here"
@@ -11,12 +12,25 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super do |resource|
       handle_team(resource)
-      flash[:notice] = "You are now an admin"
+      set_flash_message :notice, :signed_up, :username => resource.name, :teamname => resource.team_name if is_flashing_format?
     end
   end
 
-  def update
+  def edit
+    resource.team_name = resource.team.name
+    resource.team_short_name = resource.team.short_name
+    resource.team_checkout_limit = resource.team.checkout_limit
     super
+  end
+
+  def update
+    super do |resource|
+      team = Team.find(resource.team.id)
+      team.name = resource.team_name
+      team.short_name = resource.team_short_name
+      team.checkout_limit = resource.team_checkout_limit
+      team.save!
+    end
   end
 
   private
@@ -28,6 +42,8 @@ class RegistrationsController < Devise::RegistrationsController
       #not found, create
       new_team = Team.new
       new_team.name = new_user.team_name
+      new_team.checkout_limit = 3
+      new_team.short_name = new_team.name.slice(0..2)
       new_team.save!
 
       new_user.team_id = new_team.id
@@ -50,6 +66,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     #... maybe don't permit team?
-    params.require(:user).permit(:name, :team, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:name, :team, :team_name, :team_short_name, :team_checkout_limit, :email, :password, :password_confirmation, :current_password)
   end
 end

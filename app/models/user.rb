@@ -6,5 +6,6 @@ class User < ApplicationRecord
   belongs_to :team, optional:true
 
   attribute :team_name, :string
-  
+  attribute :team_short_name, :string
+  attribute :team_checkout_limit, :integer
 end
