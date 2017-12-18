@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :teams
   resources :comments
   resources :movies do
     member { post 'checkout' }
