@@ -8,4 +8,8 @@ class User < ApplicationRecord
   attribute :team_name, :string
   attribute :team_short_name, :string
   attribute :team_checkout_limit, :integer
+
+  def self.for_team(team_id)
+		where("team_id = ?", team_id)
+	end
 end

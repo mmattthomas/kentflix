@@ -4,6 +4,7 @@ class Movie < ApplicationRecord
     belongs_to :checked_out_to, class_name: "User", optional: true
     belongs_to :team
     validates :title, presence: true
+    validates :rating, numericality: { less_than_or_equal_to: 50,  only_integer: true }
 
     
     scope :sorted, lambda { order("movies.title ASC")}

@@ -43,12 +43,12 @@ class MoviesController < ApplicationController
   # GET /movies/new
   def new
     @movie = Movie.new
-    @users = User.all
+    @checkout_users = User.for_team(current_user.team_id)
   end
 
   # GET /movies/1/edit
   def edit
-    @users = User.all        
+    @checkout_users = User.for_team(current_user.team_id)  
   end
 
   # POST /movies
@@ -68,6 +68,7 @@ class MoviesController < ApplicationController
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
       else
+        @checkout_users = User.for_team(current_user.team_id)  
         format.html { render :new }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
@@ -87,6 +88,10 @@ class MoviesController < ApplicationController
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
         format.json { render :show, status: :ok, location: @movie }
       else
+        #dev pro-tip: if update fails, it will rerender form but not call 
+        #             edit controller method, so be sure to supply
+        #             any needed instance vars before re-rendering:
+        @checkout_users = User.for_team(current_user.team_id)
         format.html { render :edit }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end

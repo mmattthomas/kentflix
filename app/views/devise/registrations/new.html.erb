@@ -22,8 +22,9 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <i>Enter the name of the team you would like to join here - if you want to start a new team, enter a new team name!</i>
         <%= f.label :team_name %>
+        <br/>
+        <i>Enter the name of the team you would like to join here - if you want to start a new team, enter a new team name!</i>
         <%= f.text_field :team_name, class: 'form-control', placeholder: "Enter team to join or create here..." %>
       </div>
       <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
